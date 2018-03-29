@@ -1,6 +1,7 @@
 {
   "name": "react-schema-final-form-material-ui",
-  "version": "0.0.2",
+  "main": "./lib/index.js",
+  "version": "0.0.3",
   "title": "react-schema-final-form-material-ui",
   "description": "The theme for react-schema-final-form based on material-ui-next.",
   "keywords": [
