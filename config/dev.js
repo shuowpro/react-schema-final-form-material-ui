@@ -8,9 +8,10 @@ import resolve from 'rollup-plugin-node-resolve'
 export default {
   input: 'src/index.js',
   output: {
-    file: 'build/app.js',
+    file: 'lib/index.js',
     format: 'es'
   },
+  external: ['ajv', 'final-form', 'final-form-arrays', 'react', 'react-dom', 'react-final-form', 'react-final-form-arrays', 'react-schema-final-form', 'material-ui', 'material-ui-icons'],
   plugins: [
     babel({
       babelrc: false,

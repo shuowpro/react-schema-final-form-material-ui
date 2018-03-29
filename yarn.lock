@@ -2467,7 +2467,7 @@ commander@2.15.x, commander@^2.11.0, commander@^2.12.2, commander@~2.15.0:
   version "2.15.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.15.0.tgz#ad2a23a1c3b036e392469b8012cec6b33b4c1322"
 
-commander@^2.2.0, commander@^2.9.0, commander@~2.9.0:
+commander@^2.2.0, commander@^2.9.0:
   version "2.9.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.9.0.tgz#9c99094176e12240cb22d6c5146098400fe0f7d4"
   dependencies:
@@ -8132,11 +8132,11 @@ rollup-plugin-replace@2.0.0:
     minimatch "^3.0.2"
     rollup-pluginutils "^2.0.1"
 
-rollup-plugin-uglify@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-uglify/-/rollup-plugin-uglify-2.0.1.tgz#67b37ad1efdafbd83af4c36b40c189ee4866c969"
+rollup-plugin-uglify@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-uglify/-/rollup-plugin-uglify-3.0.0.tgz#a34eca24617709c6bf1778e9653baafa06099b86"
   dependencies:
-    uglify-js "^3.0.9"
+    uglify-es "^3.3.7"
 
 rollup-pluginutils@^1.5.0, rollup-pluginutils@^1.5.2:
   version "1.5.2"
@@ -9083,7 +9083,7 @@ ua-parser-js@0.7.12, ua-parser-js@^0.7.9:
   version "0.7.12"
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.12.tgz#04c81a99bdd5dc52263ea29d24c6bf8d4818a4bb"
 
-uglify-es@^3.3.4:
+uglify-es@^3.3.4, uglify-es@^3.3.7:
   version "3.3.9"
   resolved "https://registry.yarnpkg.com/uglify-es/-/uglify-es-3.3.9.tgz#0c1c4f0700bed8dbc124cdb304d2592ca203e677"
   dependencies:
@@ -9105,13 +9105,6 @@ uglify-js@^2.6, uglify-js@^2.8.29:
     yargs "~3.10.0"
   optionalDependencies:
     uglify-to-browserify "~1.0.0"
-
-uglify-js@^3.0.9:
-  version "3.0.15"
-  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.0.15.tgz#aacb323a846b234602270dead8a32441a8806f42"
-  dependencies:
-    commander "~2.9.0"
-    source-map "~0.5.1"
 
 uglify-to-browserify@~1.0.0:
   version "1.0.2"
