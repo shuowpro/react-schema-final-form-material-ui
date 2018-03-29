@@ -72,8 +72,6 @@
     "build:dev": "rollup -c config/dev.js -w",
     "start": "npm run storybook",
     "test": "npm run build:dev",
-    "version": "npm run build && git add -A .",
-    "postversion": "git push --tags origin HEAD",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
