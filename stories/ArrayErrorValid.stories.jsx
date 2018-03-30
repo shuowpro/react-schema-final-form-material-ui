@@ -5,7 +5,8 @@ import { renderField, buildSyncValidation } from 'react-schema-final-form';
 import { storiesOf } from '@storybook/react';
 import arrayMutators from 'final-form-arrays';
 import Button from 'material-ui/Button';
-import Ajv from 'ajv';
+import { FormGroup } from 'material-ui/Form';
+
 
 const onSubmit = values => {
   window.alert(JSON.stringify(values, 0, 2))
@@ -36,10 +37,6 @@ const schema = {
 }
 
 const ArrayErrorFieldForm = (props) => {
-  const ajv = new Ajv({
-    allErrors: true,
-    errorDataPath: 'property',
-  });
   const {
     schema,
   } = props;
@@ -49,7 +46,7 @@ const ArrayErrorFieldForm = (props) => {
       mutators={{
         ...arrayMutators
       }}
-      validate={buildSyncValidation(schema, ajv)}
+      validate={buildSyncValidation(schema)}
       validateOnBlur
     >
       {({ 

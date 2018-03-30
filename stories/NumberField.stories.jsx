@@ -1,9 +1,8 @@
 import React from 'react';
-import { Form, Field } from 'react-final-form';
+import { Form } from 'react-final-form';
 import theme from '../src';
-import { renderField, buildSyncValidation } from 'react-schema-final-form';
+import renderSchema, { buildSyncValidation } from 'react-schema-final-form';
 import { storiesOf } from '@storybook/react';
-import arrayMutators from 'final-form-arrays';
 import Button from 'material-ui/Button';
 
 const onSubmit = values => {
@@ -11,39 +10,41 @@ const onSubmit = values => {
 }
 
 const schema = {
-  $schema: 'http://json-schema.org/draft-06/schema#',
   type: 'object',
   properties: {
     foo: {
-      type: 'string',
-      title: 'Foo',
-    },
-    bar: {
-      type: 'string',
-      title: 'Bar',
-    },
+      type: 'integer',
+      title: 'Title',
+    }
   },
-  required: ['foo', 'bar'],
+  required: ['foo'],
 }
 
-const ErrorFieldForm = (props) => {
+const schemaWithDefault = {
+  type: 'object',
+  properties: {
+    foo: {
+      type: 'integer',
+      default: 8500,
+      title: 'Title',
+    }
+  },
+  required: ['foo'],
+}
+
+const NumberFieldForm = (props) => {
   const {
     schema,
   } = props;
   return (
     <Form
       onSubmit={onSubmit}
-      mutators={{
-        ...arrayMutators
-      }}
       validate={buildSyncValidation(schema)}
       validateOnBlur
     >
-      {({ 
-        handleSubmit,
-      }) => (
+      {({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>
-          {renderField({
+          {renderSchema({
             schema,
             theme,
           })}
@@ -59,5 +60,6 @@ const ErrorFieldForm = (props) => {
   )
 }
 
-storiesOf('Error Validation', module)
-  .add('with error valid', () => <ErrorFieldForm schema={schema} />)
+storiesOf('NumberField', module)
+  .add('with number widget', () => <NumberFieldForm schema={schema} />)
+  .add('with number widget with default value', () => <NumberFieldForm schema={schemaWithDefault} />)

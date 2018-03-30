@@ -7559,9 +7559,9 @@ react-popper@^0.8.0:
     popper.js "^1.12.9"
     prop-types "^15.6.0"
 
-react-schema-final-form@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/react-schema-final-form/-/react-schema-final-form-0.0.4.tgz#ec5825727323d07f5fa24a7106d638c05ae79ace"
+react-schema-final-form@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/react-schema-final-form/-/react-schema-final-form-0.0.6.tgz#28d0559d58775ca7fa9736db87caa86b966452ba"
   dependencies:
     lodash.set "^4.3.2"
 
@@ -7587,6 +7587,12 @@ react-style-proptype@^3.0.0:
   resolved "https://registry.yarnpkg.com/react-style-proptype/-/react-style-proptype-3.2.1.tgz#7cfeb9b87ec7ab9dcbde9715170ed10c11fb86aa"
   dependencies:
     prop-types "^15.5.4"
+
+react-text-mask@^5.2.1:
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/react-text-mask/-/react-text-mask-5.2.1.tgz#26f7e492b265a03f7d1a32d78bc3a214a40812c9"
+  dependencies:
+    prop-types "^15.5.6"
 
 react-transition-group@^1.1.2:
   version "1.2.1"

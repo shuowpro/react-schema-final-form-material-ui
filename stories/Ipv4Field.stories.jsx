@@ -1,8 +1,9 @@
 import React from 'react';
 import { Form } from 'react-final-form';
 import theme from '../src';
-import { renderField } from 'react-schema-final-form';
+import renderSchema, { buildSyncValidation } from 'react-schema-final-form';
 import { storiesOf } from '@storybook/react';
+import Button from 'material-ui/Button';
 
 const onSubmit = values => {
   window.alert(JSON.stringify(values, 0, 2))
@@ -13,30 +14,40 @@ const schema = {
   properties: {
     foo: {
       type: 'string',
-      title: 'Title',
+      title: 'IP',
+      format: 'ipv4',
     }
-  }
+  },
+  required: ['foo'],
 }
 
-const InputFieldForm = (props) => {
+const Ipv4FieldForm = (props) => {
   const {
     schema,
   } = props;
   return (
     <Form
       onSubmit={onSubmit}
+      validate={buildSyncValidation(schema)}
+      validateOnBlur
     >
       {({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>
-          {renderField({
+          {renderSchema({
             schema,
             theme,
           })}
+          <Button
+            variant="raised"
+            type="submit"
+          >
+            Submit
+          </Button>
         </form>
       )}
     </Form>
   )
 }
 
-storiesOf('InputField', module)
-  .add('with input widget', () => <InputFieldForm schema={schema} />)
+storiesOf('IP Field', module)
+  .add('with ipv4 widget', () => <Ipv4FieldForm schema={schema} />)

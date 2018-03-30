@@ -2,27 +2,35 @@ import React from 'react';
 import { Field } from 'react-final-form';
 import TextField from 'material-ui/TextField';
 
-const BaseInputWidget = props => (
-  <Field
-    name={props.fieldName}
-  >
-    {({
-      input: { name, onChange, value, ...restInput },
-      meta: { touched, error },
-      ...rest
-    }) => {
-      console.log('name', name);
-      return (
-      <TextField
-        {...rest}
-        name={name}
-        helperText={touched ? error : undefined}
-        error={error && touched}
-        inputProps={restInput}
-        onChange={onChange}
-        value={value}
-      />
-    )}}
-  </Field>
-)
+const BaseInputWidget = props => {
+  const {
+    fieldName,
+    schema,
+    ...rest
+  } = props;
+  return (
+    <Field
+      name={fieldName}
+      label={schema.title}
+      placeholder={schema.default ? schema.default + '' : ''}
+      {...rest}
+    >
+      {({
+        input: { name, onChange, value, ...restInput },
+        meta: { touched, error },
+        ...rest
+      }) => (
+        <TextField
+          {...rest}
+          name={name}
+          helperText={touched ? error : undefined}
+          error={error && touched}
+          inputProps={restInput}
+          onChange={onChange}
+          value={value}
+        />
+      )}
+    </Field>
+  )
+}
 export default BaseInputWidget;
