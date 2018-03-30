@@ -1,9 +1,11 @@
 import React from 'react';
 import { Field } from 'react-final-form';
-import Input, { InputLabel } from 'material-ui/Input'
-import { FormControl, FormHelperText } from 'material-ui/Form';
+import Input from 'material-ui/Input';
+import InputLabel from 'material-ui/Input/InputLabel';
+import FormControl from 'material-ui/Form/FormControl';
+import FormHelperText from 'material-ui/Form/FormHelperText';
 import Select from 'material-ui/Select';
-import { MenuItem } from 'material-ui/Menu';
+import MenuItem from 'material-ui/Menu/MenuItem';
 
 const SelectWidget = props => {
   const {

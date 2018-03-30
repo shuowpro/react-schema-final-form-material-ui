@@ -1,6 +1,8 @@
 import React from 'react';
 import { Field } from 'react-final-form';
-import { FormControl, FormControlLabel, FormHelperText } from 'material-ui/Form';
+import FormControl from 'material-ui/Form/FormControl';
+import FormControlLabel from 'material-ui/Form/FormControlLabel';
+import FormHelperText from 'material-ui/Form/FormHelperText';
 import Switch from 'material-ui/Switch';
 
 const SwitchWidget = props => {

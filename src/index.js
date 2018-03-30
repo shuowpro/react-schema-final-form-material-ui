@@ -1,10 +1,10 @@
-import StringWidget from './StringWidget';
-import ObjectWidget from './ObjectWidget';
-import ArrayWidget from './ArrayWidget';
-import SwitchWidget from './SwitchWidget';
-import IpWidget from './IpWidget';
-import SelectWidget from './SelectWidget';
-import NumberWidget from './NumberWidget';
+import StringWidget from './StringWidget.jsx';
+import ObjectWidget from './ObjectWidget.jsx';
+import ArrayWidget from './ArrayWidget.jsx';
+import SwitchWidget from './SwitchWidget.jsx';
+import IpWidget from './IpWidget.jsx';
+import SelectWidget from './SelectWidget.jsx';
+import NumberWidget from './NumberWidget.jsx';
 
 const theme = {
   'string': StringWidget,

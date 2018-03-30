@@ -1,5 +1,5 @@
 import React from 'react';
-import BaseInputWidget from './BaseInputWidget';
+import BaseInputWidget from './BaseInputWidget.jsx';
 
 const numberParser = value =>
   parseInt(value, 10) || '';
