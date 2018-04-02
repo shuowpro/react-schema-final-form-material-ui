@@ -5822,10 +5822,6 @@ lodash.pick@^4.4.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/lodash.pick/-/lodash.pick-4.4.0.tgz#52f05610fff9ded422611441ed1fc123a03001b3"
 
-lodash.set@^4.3.2:
-  version "4.3.2"
-  resolved "https://registry.yarnpkg.com/lodash.set/-/lodash.set-4.3.2.tgz#d8757b1da807dde24816b0d6a84bea1a76230b23"
-
 lodash.some@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/lodash.some/-/lodash.some-4.6.0.tgz#1bb9f314ef6b8baded13b549169b2a945eb68e4d"
@@ -7558,12 +7554,6 @@ react-popper@^0.8.0:
   dependencies:
     popper.js "^1.12.9"
     prop-types "^15.6.0"
-
-react-schema-final-form@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/react-schema-final-form/-/react-schema-final-form-0.0.6.tgz#28d0559d58775ca7fa9736db87caa86b966452ba"
-  dependencies:
-    lodash.set "^4.3.2"
 
 react-scrollbar-size@^2.0.2:
   version "2.1.0"

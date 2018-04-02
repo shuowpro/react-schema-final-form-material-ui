@@ -64,7 +64,7 @@ const CollectionWidget = props => {
       <Button
         variant="raised"
         color="primary"
-        onClick={() => { mutators.push(fieldName, {}) }}
+        onClick={() => { mutators.push(fieldName, schema.items && schema.items.type === 'object' ? {} : undefined) }}
       >
         Add
       </Button>

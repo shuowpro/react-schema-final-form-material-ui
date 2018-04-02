@@ -22,7 +22,6 @@ const SwitchWidget = props => {
         label,
         ...rest
       }) => {
-        console.log(touched && error)
         return (
         <FormControl error={(!!touched) && (!!error)}>
           <FormControlLabel
