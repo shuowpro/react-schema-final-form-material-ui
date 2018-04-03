@@ -2,6 +2,8 @@ import React from 'react';
 import { Field } from 'react-final-form';
 import TextField from 'material-ui/TextField';
 
+const isString = value => typeof value === 'string' || value instanceof String;
+
 const BaseInputWidget = props => {
   const {
     fieldName,
@@ -27,7 +29,7 @@ const BaseInputWidget = props => {
           error={error && touched}
           inputProps={restInput}
           onChange={onChange}
-          value={value || ''}
+          value={isString(value) ? value : ''}
         />
       )}
     </Field>
