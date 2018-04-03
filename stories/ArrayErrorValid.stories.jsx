@@ -19,18 +19,8 @@ const schema = {
     arrs: {
       type: 'array',
       items: {
-        type: 'object',
-        properties: {
-          foo: {
-            type: 'string',
-            title: 'Foo',
-          },
-          bar: {
-            type: 'string',
-            title: 'Bar',
-          },
-        },
-        required: ['foo', 'bar'],
+        type: 'string',
+        title: 'Foo',
       },
     }
   },
@@ -52,6 +42,7 @@ const ArrayErrorFieldForm = (props) => {
       {({ 
         handleSubmit,
         mutators,
+        values,
       }) => (
         <form onSubmit={handleSubmit}>
           {renderField({
@@ -65,6 +56,7 @@ const ArrayErrorFieldForm = (props) => {
           >
             Submit
           </Button>
+          <pre>{JSON.stringify(values, 0, 2)}</pre>
         </form>
       )}
     </Form>
