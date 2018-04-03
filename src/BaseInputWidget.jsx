@@ -27,7 +27,7 @@ const BaseInputWidget = props => {
           error={error && touched}
           inputProps={restInput}
           onChange={onChange}
-          value={value}
+          value={value || ''}
         />
       )}
     </Field>
