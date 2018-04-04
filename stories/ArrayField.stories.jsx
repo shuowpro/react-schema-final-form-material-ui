@@ -27,7 +27,8 @@ const schema = {
             title: 'Gra'
           }
         }
-      }
+      },
+      title: 'Foo',
     }
   }
 }

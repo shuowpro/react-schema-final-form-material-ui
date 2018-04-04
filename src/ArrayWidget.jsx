@@ -7,6 +7,8 @@ import { renderField } from 'react-schema-final-form';
 import { FieldArray } from "react-final-form-arrays";
 import FormControl from 'material-ui/Form/FormControl';
 import FormHelperText from 'material-ui/Form/FormHelperText';
+import Paper from 'material-ui/Paper';
+import Typography from 'material-ui/Typography';
 
 const handleClickRemove = (remove, idx) => () => {
   remove(idx);
@@ -55,7 +57,18 @@ const CollectionWidget = props => {
     mutators,
   } = props;
   return (
-    <Fragment>
+    <Paper
+      style={{
+        padding: '20px',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
+      <Typography
+        variant="title"
+      >
+        {schema.title}
+      </Typography>
       <FieldArray
         name={fieldName}
         fieldName={fieldName}
@@ -84,10 +97,13 @@ const CollectionWidget = props => {
         variant="raised"
         color="primary"
         onClick={() => { mutators.push(fieldName, schema.items && schema.items.type === 'object' ? {} : undefined) }}
+        style={{
+          alignSelf: 'flex-start',
+        }}
       >
         Add
       </Button>
-    </Fragment>
+    </Paper>
   );
 };
 

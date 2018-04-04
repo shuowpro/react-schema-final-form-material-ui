@@ -21,7 +21,8 @@ const schema = {
         type: 'string',
         title: 'Foo',
       },
-    }
+      title: 'arrs',
+    },
   },
   required: ['arrs'],
 }
