@@ -5,7 +5,8 @@ import IconButton from 'material-ui/IconButton';
 import ClearIcon from 'material-ui-icons/Clear';
 import { renderField } from 'react-schema-final-form';
 import { FieldArray } from "react-final-form-arrays";
-import { FormControl, FormHelperText } from 'material-ui/Form';
+import FormControl from 'material-ui/Form/FormControl';
+import FormHelperText from 'material-ui/Form/FormHelperText';
 
 const handleClickRemove = (remove, idx) => () => {
   remove(idx);
