@@ -19,6 +19,7 @@ const renderArrayFields = ({
   schema,
   theme,
   fieldName,
+  mutators,
 }) => {
   return fields.map((name, idx) => 
     <div
@@ -43,6 +44,7 @@ const renderArrayFields = ({
           schema: schema.items,
           fieldName: name,
           theme,
+          mutators,
         })}
       </div>
     </div>
@@ -88,6 +90,7 @@ const CollectionWidget = props => {
               schema,
               theme,
               fieldName,
+              mutators,
             })}
             <FormHelperText>{touched && !Array.isArray(error) ? error : undefined}</FormHelperText>
           </FormControl>
