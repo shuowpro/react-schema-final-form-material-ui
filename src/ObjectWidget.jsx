@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';
 import FormGroup from 'material-ui/Form/FormGroup';
 import { renderObjectProperties } from 'react-schema-final-form';
 
+const withPaperContainer = CustomComponent =>
+  class extends Component {
+    render() {
+      return (
+        this.props.fieldName ?
+        <Paper
+          style={{
+            margin: '20px 0',
+          }}
+        >
+          <CustomComponent {...this.props} />
+        </Paper> :
+        <CustomComponent {...this.props} />
+      );
+    }
+  }
 
 const ObjectWidget = props => {
   const {
@@ -13,24 +29,18 @@ const ObjectWidget = props => {
     fieldName,
   } = props;
   return (
-    <Paper
+    <FormGroup
       style={{
-        margin: '20px 0',
+        padding: '20px',
       }}
     >
-      <FormGroup
-        style={{
-          padding: '20px',
-        }}
-      >
-        {renderObjectProperties({
-          schema,
-          theme,
-          mutators,
-          fieldName,
-        })}
-      </FormGroup>
-    </Paper>
+      {renderObjectProperties({
+        schema,
+        theme,
+        mutators,
+        fieldName,
+      })}
+    </FormGroup>
   );
 };
 
@@ -41,4 +51,4 @@ ObjectWidget.propTypes = {
   theme: PropTypes.object,
 };
 
-export default ObjectWidget;
+export default withPaperContainer(ObjectWidget);
