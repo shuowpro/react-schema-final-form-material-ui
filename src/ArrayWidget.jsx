@@ -19,17 +19,30 @@ const renderArrayFields = ({
   fieldName,
 }) => {
   return fields.map((name, idx) => 
-    <div key={name}>
+    <div
+      key={name}
+      style={{
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+      }}
+    >
       <IconButton
         onClick={handleClickRemove(fields.remove, idx)}
       >
         <ClearIcon />
       </IconButton>
-      {renderField({
-        schema: schema.items,
-        fieldName: name,
-        theme,
-      })}
+      <div
+        style={{
+          flexGrow: 1,
+        }}
+      >
+        {renderField({
+          schema: schema.items,
+          fieldName: name,
+          theme,
+        })}
+      </div>
     </div>
   )
 };

@@ -5,7 +5,6 @@ import { renderField, buildSyncValidation } from 'react-schema-final-form';
 import { storiesOf } from '@storybook/react';
 import arrayMutators from 'final-form-arrays';
 import Button from 'material-ui/Button';
-import { FormGroup } from 'material-ui/Form';
 
 
 const onSubmit = values => {

@@ -20,7 +20,11 @@ const schema = {
         properties: {
           bar: {
             type: 'string',
-            title: 'Title',
+            title: 'Bar',
+          },
+          gra: {
+            type: 'string',
+            title: 'Gra'
           }
         }
       }

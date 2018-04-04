@@ -1,6 +1,9 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import Paper from 'material-ui/Paper';
+import FormGroup from 'material-ui/Form/FormGroup';
 import { renderObjectProperties } from 'react-schema-final-form';
+
 
 const ObjectWidget = props => {
   const {
@@ -10,14 +13,24 @@ const ObjectWidget = props => {
     fieldName,
   } = props;
   return (
-    <Fragment>
-      {renderObjectProperties({
-        schema,
-        theme,
-        mutators,
-        fieldName,
-      })}
-    </Fragment>
+    <Paper
+      style={{
+        margin: '20px 0',
+      }}
+    >
+      <FormGroup
+        style={{
+          padding: '20px',
+        }}
+      >
+        {renderObjectProperties({
+          schema,
+          theme,
+          mutators,
+          fieldName,
+        })}
+      </FormGroup>
+    </Paper>
   );
 };
 

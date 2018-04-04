@@ -13,6 +13,7 @@ const BaseInputWidget = props => {
       name={fieldName}
       label={schema.title}
       placeholder={schema.default ? schema.default + '' : ''}
+      fullWidth
       {...rest}
     >
       {({
