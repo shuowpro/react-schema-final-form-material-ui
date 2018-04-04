@@ -5,6 +5,7 @@ import IconButton from 'material-ui/IconButton';
 import ClearIcon from 'material-ui-icons/Clear';
 import { renderField } from 'react-schema-final-form';
 import { FieldArray } from "react-final-form-arrays";
+import { FormControl, FormHelperText } from 'material-ui/Form';
 
 const handleClickRemove = (remove, idx) => () => {
   remove(idx);
@@ -52,13 +53,17 @@ const CollectionWidget = props => {
           schema,
           theme,
           fieldName,
+          meta: { touched, error },
         }) => (
-          renderArrayFields({
-            fields,
-            schema,
-            theme,
-            fieldName,
-          })
+          <FormControl>
+            {renderArrayFields({
+              fields,
+              schema,
+              theme,
+              fieldName,
+            })}
+            <FormHelperText>{touched && !Array.isArray(error) ? error : undefined}</FormHelperText>
+          </FormControl>
         )}
       </FieldArray>
       <Button

@@ -24,6 +24,7 @@ const schema = {
       },
     }
   },
+  required: ['arrs'],
 }
 
 const ArrayErrorFieldForm = (props) => {
