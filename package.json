@@ -74,7 +74,7 @@
     "start": "npm run storybook",
     "test": "npm run build:dev",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook -c .storybook -o .doc"
   },
   "peerDependencies": {
     "ajv": "^6.3.0",

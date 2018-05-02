@@ -8,15 +8,15 @@
 Via **npm** into a fresh project:
 
 ```sh
-npm install react-schema-final-form-material-ui
+npm install react-schema-final-form react-schema-final-form-material-ui
 ```
 
 Or using yarn:
 
 ```sh
-yarn add react-schema-final-form-material-ui
+yarn add react-schema-final-form react-schema-final-form-material-ui
 ```
 
 ## Usage
 
-Working in process...
+This library is depends on the react-schema-final-form. The usage of this library is demostrate in the storybook. The most important widget are Array Widget, Base InputWidget and ObjectWidget. All of these widget are relate to the basic function of react-schema-final-form. In order to achieve fully costumizable, we just expose the details to the user. Whereas the other part are pretty easy to build.
