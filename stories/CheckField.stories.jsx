@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form } from 'react-final-form';
 import theme from '../src';
-import renderSchema, { buildSyncValidation } from 'react-schema-final-form';
+import SchemaForm from 'react-schema-final-form';
 import { storiesOf } from '@storybook/react';
 import Button from 'material-ui/Button';
 
@@ -20,33 +20,38 @@ const schema = {
   required: ['foo'],
 }
 
-const CheckFieldForm = (props) => {
+const CheckErrorForm = (props) => {
   const {
     schema,
   } = props;
   return (
-    <Form
-      onSubmit={onSubmit}
-      validate={buildSyncValidation(schema)}
-      validateOnBlur
+    <SchemaForm
+      schema={schema}
+      theme={theme}
     >
-      {({ handleSubmit }) => (
-        <form onSubmit={handleSubmit}>
-          {renderSchema({
-            schema,
-            theme,
-          })}
-          <Button
-            variant="raised"
-            type="submit"
-            >
-            Submit
-          </Button>
-        </form>
+      {({ RenderedFields, validate }) => (
+        <Form
+          onSubmit={onSubmit}
+          validate={validate}
+          validateOnBlur
+        >
+          {({ handleSubmit, values }) => (
+            <form onSubmit={handleSubmit}>
+              <RenderedFields />
+              <Button
+                variant="raised"
+                type="submit"
+                >
+                Submit
+              </Button>
+              <pre>{JSON.stringify(values, 0, 2)}</pre>
+            </form>
+          )}
+        </Form>
       )}
-    </Form>
+    </SchemaForm>
   )
 }
 
-storiesOf('CheckField', module)
-  .add('with check widget', () => <CheckFieldForm schema={schema} />)
+storiesOf('Check', module)
+  .add('with check error validation', () => <CheckErrorForm schema={schema} />)

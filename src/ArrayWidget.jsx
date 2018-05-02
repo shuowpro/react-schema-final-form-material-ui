@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
 import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
@@ -7,119 +7,97 @@ import { renderField } from 'react-schema-final-form';
 import { FieldArray } from "react-final-form-arrays";
 import FormControl from 'material-ui/Form/FormControl';
 import FormHelperText from 'material-ui/Form/FormHelperText';
+import FormLabel from 'material-ui/Form/FormLabel';
+import FormGroup from 'material-ui/Form/FormGroup';
 import Paper from 'material-ui/Paper';
-import Typography from 'material-ui/Typography';
+import _isString from 'lodash.isstring';
+
 
 const handleClickRemove = (remove, idx) => () => {
   remove(idx);
 }
 
-const renderArrayFields = ({
-  fields,
-  schema,
-  theme,
-  fieldName,
-  mutators,
-}) => {
-  return fields.map((name, idx) => 
-    <div
-      key={name}
-      style={{
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'flex-start',
-      }}
-    >
-      <IconButton
-        onClick={handleClickRemove(fields.remove, idx)}
-      >
-        <ClearIcon />
-      </IconButton>
-      <div
-        style={{
-          flexGrow: 1,
-        }}
-      >
-        {renderField({
-          schema: schema.items,
-          fieldName: name,
-          theme,
-          mutators,
-        })}
-      </div>
-    </div>
-  )
-};
-
-const CollectionWidget = props => {
+const ArrayWidget = (props, context) => {
   const {
     fieldName,
     schema,
     theme,
-    mutators,
+    required,
   } = props;
+  const {
+    reactFinalForm: { mutators },
+  } = context;
   return (
-    <Paper
-      style={{
-        padding: '20px',
-        display: 'flex',
-        flexDirection: 'column',
-      }}
+    <FieldArray
+      name={fieldName}
+      fieldName={fieldName}
+      schema={schema}
+      theme={theme}
     >
-      <Typography
-        variant="title"
-      >
-        {schema.title}
-      </Typography>
-      <FieldArray
-        name={fieldName}
-        fieldName={fieldName}
-        schema={schema}
-        theme={theme}
-      >
-        {({
-          fields,
-          schema,
-          theme,
-          fieldName,
-          meta: { touched, error },
-        }) => (
-          <FormControl>
-            {renderArrayFields({
-              fields,
-              schema,
-              theme,
-              fieldName,
-              mutators,
-            })}
-            <FormHelperText>{touched && !Array.isArray(error) ? error : undefined}</FormHelperText>
-          </FormControl>
-        )}
-      </FieldArray>
-      <Button
-        variant="raised"
-        color="primary"
-        onClick={() => { mutators.push(fieldName, schema.items && schema.items.type === 'object' ? {} : undefined) }}
+      {({
+        fields,
+        schema,
+        theme,
+        fieldName,
+        meta: { touched, error },
+      }) => (
+      <Paper
         style={{
-          alignSelf: 'flex-start',
+          padding: '20px',
+          display: 'flex',
+          flexDirection: 'column',
         }}
       >
-        Add
-      </Button>
-    </Paper>
+          <FormControl component="fieldset" required={required} fullWidth>
+            <FormGroup>
+              {schema.title && <FormLabel component="legend">{schema.title}</FormLabel>}
+              {fields.map((name, idx) => 
+                <FormGroup
+                  key={name}
+                >
+                  <IconButton
+                    onClick={handleClickRemove(fields.remove, idx)}
+                    style={{
+                      alignSelf: 'flex-end',
+                    }}
+                  >
+                    <ClearIcon />
+                  </IconButton>
+                  {renderField({
+                    schema: schema.items,
+                    fieldName: name,
+                    theme,
+                  })}
+                </FormGroup>
+              )}
+              <FormHelperText>{_isString(error) ? error : undefined}</FormHelperText>
+            </FormGroup>
+          </FormControl>
+        <Button
+          variant="raised"
+          color="primary"
+          onClick={() => { mutators.push(fieldName, schema.items && schema.items.type === 'object' ? {} : undefined) }}
+          style={{
+            alignSelf: 'flex-start',
+          }}
+        >
+          Add
+        </Button>
+      </Paper>
+      )}
+    </FieldArray>
   );
-};
-
-const ArrayWidget = (props) => {
-  return CollectionWidget(props);
-};
+}
 
 ArrayWidget.propTypes = {
   schema: PropTypes.object.isRequired,
   fieldName: PropTypes.string,
   label: PropTypes.string,
   theme: PropTypes.object,
-  context: PropTypes.object,
-};
+}
+
+ArrayWidget.contextTypes = {
+  reactFinalForm: PropTypes.object.isRequired,
+}
 
 export default ArrayWidget;

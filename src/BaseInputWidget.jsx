@@ -13,22 +13,22 @@ const BaseInputWidget = props => {
       name={fieldName}
       label={schema.title}
       placeholder={schema.default ? schema.default + '' : ''}
-      fullWidth
       {...rest}
     >
       {({
         input: { name, onChange, value, ...restInput },
         meta: { touched, error },
-        ...rest
+        ...others
       }) => (
         <TextField
-          {...rest}
+          {...others}
           name={name}
           helperText={touched ? error : undefined}
           error={error && touched}
           inputProps={restInput}
           onChange={onChange}
           value={value}
+          fullWidth
         />
       )}
     </Field>

@@ -1,8 +1,9 @@
 import React from 'react';
-import { Form } from 'react-final-form';
+import { Form, Field } from 'react-final-form';
 import theme from '../src';
 import SchemaForm from 'react-schema-final-form';
 import { storiesOf } from '@storybook/react';
+import arrayMutators from 'final-form-arrays';
 import Button from 'material-ui/Button';
 
 const onSubmit = values => {
@@ -10,18 +11,22 @@ const onSubmit = values => {
 }
 
 const schema = {
+  $schema: 'http://json-schema.org/draft-06/schema#',
   type: 'object',
   properties: {
     foo: {
       type: 'string',
-      enum: ['human', 'alien'],
-      title: 'Title',
-    }
+      title: 'Foo',
+    },
+    bar: {
+      type: 'string',
+      title: 'Bar',
+    },
   },
-  required: ['foo'],
+  required: ['foo', 'bar'],
 }
 
-const SelectFieldForm = (props) => {
+const ObjectErrorForm = (props) => {
   const {
     schema,
   } = props;
@@ -33,6 +38,9 @@ const SelectFieldForm = (props) => {
       {({ RenderedFields, validate }) => (
         <Form
           onSubmit={onSubmit}
+          mutators={{
+            ...arrayMutators
+          }}
           validate={validate}
           validateOnBlur
         >
@@ -54,5 +62,5 @@ const SelectFieldForm = (props) => {
   )
 }
 
-storiesOf('Select', module)
-  .add('with select error validate', () => <SelectFieldForm schema={schema} />)
+storiesOf('Object', module)
+  .add('with object error valid', () => <ObjectErrorForm schema={schema} />)

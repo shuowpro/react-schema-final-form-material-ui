@@ -9,6 +9,7 @@ const SwitchWidget = props => {
   const {
     fieldName,
     schema,
+    required,
   } = props;
   return (
     <Field
@@ -23,7 +24,7 @@ const SwitchWidget = props => {
         ...rest
       }) => {
         return (
-        <FormControl error={(!!touched) && (!!error)}>
+        <FormControl error={(!!touched) && (!!error)} required={required} fullWidth>
           <FormControlLabel
             control={
               <Switch

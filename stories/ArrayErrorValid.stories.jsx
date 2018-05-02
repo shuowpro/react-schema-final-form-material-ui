@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
 import theme from '../src';
-import { renderField, buildSyncValidation } from 'react-schema-final-form';
+import SchemaForm from 'react-schema-final-form';
 import { storiesOf } from '@storybook/react';
 import arrayMutators from 'final-form-arrays';
 import Button from 'material-ui/Button';
@@ -27,42 +27,41 @@ const schema = {
   required: ['arrs'],
 }
 
-const ArrayErrorFieldForm = (props) => {
+const ArrayErrorForm = (props) => {
   const {
     schema,
   } = props;
   return (
-    <Form
-      onSubmit={onSubmit}
-      mutators={{
-        ...arrayMutators
-      }}
-      validate={buildSyncValidation(schema)}
-      validateOnBlur
+    <SchemaForm
+      schema={schema}
+      theme={theme}
     >
-      {({ 
-        handleSubmit,
-        mutators,
-        values,
-      }) => (
-        <form onSubmit={handleSubmit}>
-          {renderField({
-            schema,
-            theme,
-            mutators,
-          })}
-          <Button
-            variant="raised"
-            type="submit"
-          >
-            Submit
-          </Button>
-          <pre>{JSON.stringify(values, 0, 2)}</pre>
-        </form>
+      {({ RenderedFields, validate }) => (
+        <Form
+          onSubmit={onSubmit}
+          mutators={{
+            ...arrayMutators
+          }}
+          validate={validate}
+          validateOnBlur
+        >
+          {({ handleSubmit, mutators, values }) => (
+            <form onSubmit={handleSubmit}>
+              <RenderedFields />
+              <Button
+                variant="raised"
+                type="submit"
+              >
+                Submit
+              </Button>
+              <pre>{JSON.stringify(values, 0, 2)}</pre>
+            </form>
+          )}
+        </Form>
       )}
-    </Form>
+    </SchemaForm>
   )
 }
 
-storiesOf('Error Validation', module)
-  .add('with array error valid', () => <ArrayErrorFieldForm schema={schema} />)
+storiesOf('Array', module)
+  .add('with array error validate', () => <ArrayErrorForm schema={schema} />)

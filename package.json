@@ -23,7 +23,9 @@
     "npm": ">=3.0.0",
     "node": ">=6.0.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "lodash.isstring": "^4.0.1"
+  },
   "devDependencies": {
     "@storybook/addon-actions": "^3.3.15",
     "@storybook/addon-links": "^3.3.15",

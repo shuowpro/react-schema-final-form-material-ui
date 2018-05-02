@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form } from 'react-final-form';
 import theme from '../src';
-import renderSchema, { buildSyncValidation } from 'react-schema-final-form';
+import SchemaForm from 'react-schema-final-form';
 import { storiesOf } from '@storybook/react';
 import Button from 'material-ui/Button';
 
@@ -32,34 +32,39 @@ const schemaWithDefault = {
   required: ['foo'],
 }
 
-const NumberFieldForm = (props) => {
+const NumberForm = (props) => {
   const {
     schema,
   } = props;
   return (
-    <Form
-      onSubmit={onSubmit}
-      validate={buildSyncValidation(schema)}
-      validateOnBlur
+    <SchemaForm
+      schema={schema}
+      theme={theme}
     >
-      {({ handleSubmit }) => (
-        <form onSubmit={handleSubmit}>
-          {renderSchema({
-            schema,
-            theme,
-          })}
-          <Button
-            variant="raised"
-            type="submit"
-          >
-            Submit
-          </Button>
-        </form>
+      {({ RenderedFields, validate }) => ( 
+        <Form
+          onSubmit={onSubmit}
+          validate={validate}
+          validateOnBlur
+        >
+          {({ handleSubmit, values }) => (
+            <form onSubmit={handleSubmit}>
+              <RenderedFields />
+              <Button
+                variant="raised"
+                type="submit"
+              >
+                Submit
+              </Button>
+              <pre>{JSON.stringify(values, 0, 2)}</pre>
+            </form>
+          )}
+        </Form>
       )}
-    </Form>
+    </SchemaForm>
   )
 }
 
-storiesOf('NumberField', module)
-  .add('with number widget', () => <NumberFieldForm schema={schema} />)
-  .add('with number widget with default value', () => <NumberFieldForm schema={schemaWithDefault} />)
+storiesOf('Number', module)
+  .add('with number error validate', () => <NumberForm schema={schema} />)
+  .add('with number error validate and default value', () => <NumberForm schema={schemaWithDefault} />)

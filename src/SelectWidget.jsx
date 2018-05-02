@@ -11,6 +11,7 @@ const SelectWidget = props => {
   const {
     fieldName,
     schema,
+    required,
   } = props;
   return (
     <Field
@@ -24,7 +25,7 @@ const SelectWidget = props => {
         ...rest
       }) => {
         return (
-        <FormControl error={(!!touched) && (!!error)}>
+        <FormControl error={(!!touched) && (!!error)} required={required} fullWidth>
           <InputLabel htmlFor={name}>{label}</InputLabel>
           <Select
             {...rest}

@@ -1,9 +1,10 @@
 import React from 'react';
 import { Form } from 'react-final-form';
 import theme from '../src';
-import renderSchema, { buildSyncValidation } from 'react-schema-final-form';
+import SchemaForm from 'react-schema-final-form';
 import { storiesOf } from '@storybook/react';
 import Button from 'material-ui/Button';
+
 
 const onSubmit = values => {
   window.alert(JSON.stringify(values, 0, 2))
@@ -21,33 +22,39 @@ const schema = {
   required: ['foo'],
 }
 
-const Ipv4FieldForm = (props) => {
+const IpErrorForm = (props) => {
   const {
     schema,
   } = props;
   return (
-    <Form
-      onSubmit={onSubmit}
-      validate={buildSyncValidation(schema)}
-      validateOnBlur
+    <SchemaForm
+      schema={schema}
+      theme={theme}
     >
-      {({ handleSubmit }) => (
-        <form onSubmit={handleSubmit}>
-          {renderSchema({
-            schema,
-            theme,
-          })}
-          <Button
-            variant="raised"
-            type="submit"
-          >
-            Submit
-          </Button>
-        </form>
+      {({ RenderedFields, validate }) => (
+
+      <Form
+        onSubmit={onSubmit}
+        validate={validate}
+        validateOnBlur
+      >
+        {({ handleSubmit, values }) => (
+          <form onSubmit={handleSubmit}>
+            <RenderedFields />
+            <Button
+              variant="raised"
+              type="submit"
+            >
+              Submit
+            </Button>
+            <pre>{JSON.stringify(values, 0, 2)}</pre>
+          </form>
+        )}
+      </Form>
       )}
-    </Form>
+    </SchemaForm>
   )
 }
 
-storiesOf('IP Field', module)
-  .add('with ipv4 widget', () => <Ipv4FieldForm schema={schema} />)
+storiesOf('Ip', module)
+  .add('with ipv4 error validate', () => <IpErrorForm schema={schema} />)

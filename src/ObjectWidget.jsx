@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Field } from 'react-final-form';
 import Paper from 'material-ui/Paper';
 import FormGroup from 'material-ui/Form/FormGroup';
+import FormControl from 'material-ui/Form/FormControl';
+import FormLabel from 'material-ui/Form/FormLabel';
+import FormHelperText from 'material-ui/Form/FormHelperText';
 import { renderObjectProperties } from 'react-schema-final-form';
+import _isString from 'lodash.isstring';
 
 const withPaperContainer = CustomComponent =>
   class extends Component {
@@ -11,7 +16,7 @@ const withPaperContainer = CustomComponent =>
         this.props.fieldName ?
         <Paper
           style={{
-            margin: '20px 0',
+            padding: '20px',
           }}
         >
           <CustomComponent {...this.props} />
@@ -21,26 +26,32 @@ const withPaperContainer = CustomComponent =>
     }
   }
 
-const ObjectWidget = props => {
+const ObjectWidget = (props, context) => {
   const {
     schema,
     theme,
-    mutators,
     fieldName,
+    required
   } = props;
   return (
-    <FormGroup
-      style={{
-        padding: '20px',
-      }}
+    <Field
+      name={fieldName}
     >
-      {renderObjectProperties({
-        schema,
-        theme,
-        mutators,
-        fieldName,
-      })}
-    </FormGroup>
+      {({ meta: { error }}) => (
+        <FormControl component="fieldset" required={required} fullWidth>
+          {schema.title && <FormLabel component="legend">{schema.title}</FormLabel>}
+          <FormGroup>
+            {renderObjectProperties({
+              schema,
+              rootSchema: context.reactFinalSchemaForm.schema,
+              theme,
+              fieldName,
+            })}
+          </FormGroup>
+          <FormHelperText>{_isString(error) ? error : undefined}</FormHelperText>
+        </FormControl>
+      )}
+    </Field>
   );
 };
 
@@ -49,6 +60,10 @@ ObjectWidget.propTypes = {
   fieldName: PropTypes.string,
   label: PropTypes.string,
   theme: PropTypes.object,
+};
+
+ObjectWidget.contextTypes = {
+  reactFinalSchemaForm: PropTypes.object,
 };
 
 export default withPaperContainer(ObjectWidget);
