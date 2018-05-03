@@ -1,17 +1,12 @@
 language: node_js
 node_js:
-- 9
-script:
-- npm run build
-- npm run build-storybook
-sudo: false
-deploy:
-  provider: npm
-  email: leuction@gmail.com
-  api_key:
-    secure: iuNTyFkfJxarm04xF7oSTCrXjKaX2a8YkDbk3LtxH+llHqF5YJjdUPnriDcz+KgjSc2JdXQZyMM4eufWD0kp/yiSWyKzmc1EydWRrYXFYq3UKCB8afQbDyGeqHNPW/mjdaMy7C32R/AyJGPxHHiiJXXcP334xGdh3mzYiKLfsuCA8EipA1UPS0AgqA+0jtRONa2U51AVqAFzcU80+pG+4Det04Xn5maMR/c5jD52uN4aLRdbMAZjEY/enDyf15dLfGUnyIFBEWmS8a9yxo6TrlstutNAswhA+bdWN807GppknY3zv1X/Lw5j4y8CGnIGn0cWcEIrIeoojxLAkcRR8o3MPwCcV+Pz3ZgyY42l/5BqNe4XdqRjUq3BPK4WIeG0IuduNm23G3tYKvucvG5geHhnPh2IHdgRlCnlYKXlyDiMRbcQvREJMRjbe2RaVF2nMXS2L1h7AYReRQk6CNYfyW7s60s3Jb36eMyt2B4DyYN49HLJez4LcdZcpHdAKQ59yemgEJPxXcQc68eJgZNoqZKZPQ9DtvVn80VjhuH4pemlcb6TDY+yqDy/FF9f4BelravSkcJZcNNBvkSgTWZo0prKK7VrbbmNBueMExNaVZMQ4ej1LBymFMFoaUDsR55bop5+ZQcOPcwfJ79kIUr4UjGdu/JtLEQBR6MARUzN4nc=
-  on:
-    repo: leuction/react-schema-final-form-material-ui
+  - 9
+install:
+  - npm i -g npm@5.8.0
+  - npm ci
 branches:
   only:
-  - master
+    - master
+cache:
+  directories:
+    - "$HOME/.npm"
