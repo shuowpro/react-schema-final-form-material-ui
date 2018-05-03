@@ -1,7 +1,7 @@
 {
   "name": "react-schema-final-form-material-ui",
   "main": "./lib/index.js",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "title": "react-schema-final-form-material-ui",
   "description": "The theme for react-schema-final-form based on material-ui-next.",
   "keywords": [
@@ -72,9 +72,10 @@
     "prebuild:dev": "rimraf lib",
     "build:dev": "rollup -c config/dev.js -w",
     "start": "npm run storybook",
-    "test": "npm run build:dev",
+    "test": "echo \"Error: no test specified\" && exit 0",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -c .storybook -o .doc"
+    "build-storybook": "build-storybook -c .storybook -o .doc",
+    "prepare": "npm run build"
   },
   "peerDependencies": {
     "ajv": "^6.3.0",
