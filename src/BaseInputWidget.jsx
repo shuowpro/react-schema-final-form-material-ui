@@ -24,7 +24,6 @@ const BaseInputWidget = props => {
     <Field
       name={fieldName}
       label={schema.title}
-      placeholder={schema.default ? schema.default + '' : ''}
       {...rest}
     >
       {({
@@ -37,8 +36,8 @@ const BaseInputWidget = props => {
           required={required}
           fullWidth
         >
-          <InputLabel htmlFor={name}>Name</InputLabel>
-          <Input id={fieldName} type={type} {...restInput} />
+          {schema.title && <InputLabel htmlFor={name}>{schema.title}</InputLabel>}
+          <Input id={fieldName} type={type} placeholder={schema.default ? schema.default + '' : ''} {...restInput} />
           {(!!touched && !!error) && <FormHelperText>{touched ? error : undefined}</FormHelperText>}
           {schema.description && <FormHelperText error={false}>{schema.description}</FormHelperText>}
         </FormControl>
