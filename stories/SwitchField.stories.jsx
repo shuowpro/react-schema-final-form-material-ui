@@ -15,6 +15,7 @@ const schema = {
     foo: {
       type: 'boolean',
       title: 'Title',
+      description: 'Description',
     }
   },
   required: ['foo'],

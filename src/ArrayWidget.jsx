@@ -11,7 +11,13 @@ import FormLabel from 'material-ui/Form/FormLabel';
 import FormGroup from 'material-ui/Form/FormGroup';
 import Paper from 'material-ui/Paper';
 import _isString from 'lodash.isstring';
+import withStyles from 'material-ui/styles/withStyles';
 
+const styles = theme => ({
+  element: {
+    margin: `${theme.spacing.unit}px 0`,
+  },
+});
 
 const handleClickRemove = (remove, idx) => () => {
   remove(idx);
@@ -23,6 +29,7 @@ const ArrayWidget = (props, context) => {
     schema,
     theme,
     required,
+    classes,
   } = props;
   const {
     reactFinalForm: { mutators },
@@ -32,25 +39,29 @@ const ArrayWidget = (props, context) => {
       name={fieldName}
       fieldName={fieldName}
       schema={schema}
-      theme={theme}
     >
       {({
         fields,
         schema,
-        theme,
         fieldName,
-        meta: { touched, error },
+        meta: { error },
       }) => (
       <Paper
         style={{
-          padding: '20px',
+          padding: '16px',
           display: 'flex',
           flexDirection: 'column',
         }}
       >
-          <FormControl component="fieldset" required={required} fullWidth>
+          <FormControl
+            className={classes.root}
+            component="fieldset"
+            error={_isString(error)}
+            required={required} 
+            fullWidth
+          >
             <FormGroup>
-              {schema.title && <FormLabel component="legend">{schema.title}</FormLabel>}
+              {schema.title && <FormLabel component="legend" className={classes.element}>{schema.title}</FormLabel>}
               {fields.map((name, idx) => 
                 <FormGroup
                   key={name}
@@ -70,10 +81,12 @@ const ArrayWidget = (props, context) => {
                   })}
                 </FormGroup>
               )}
-              <FormHelperText>{_isString(error) ? error : undefined}</FormHelperText>
+              {_isString(error) && <FormHelperText>{_isString(error) ? error : undefined}</FormHelperText>}
+              {schema.description && <FormHelperText error={false}>{schema.description}</FormHelperText>}
             </FormGroup>
           </FormControl>
         <Button
+          className={classes.element}
           variant="raised"
           color="primary"
           onClick={() => { mutators.push(fieldName, schema.items && schema.items.type === 'object' ? {} : undefined) }}
@@ -100,4 +113,4 @@ ArrayWidget.contextTypes = {
   reactFinalForm: PropTypes.object.isRequired,
 }
 
-export default ArrayWidget;
+export default withStyles(styles)(ArrayWidget);

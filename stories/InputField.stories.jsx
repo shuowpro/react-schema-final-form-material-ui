@@ -16,8 +16,10 @@ const schema = {
     foo: {
       type: 'string',
       title: 'Title',
+      description: 'description',
     }
-  }
+  },
+  required: ['foo'],
 }
 
 const InputErrorForm = (props) => {

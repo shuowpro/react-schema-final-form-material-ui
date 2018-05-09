@@ -4,7 +4,7 @@ import ArrayWidget from './ArrayWidget.jsx';
 import SwitchWidget from './SwitchWidget.jsx';
 import IpWidget from './IpWidget.jsx';
 import SelectWidget from './SelectWidget.jsx';
-import NumberWidget from './NumberWidget.jsx';
+import IntegerWidget from './IntegerWidget.jsx';
 
 const theme = {
   'string': StringWidget,
@@ -15,7 +15,7 @@ const theme = {
   'ipv6': IpWidget,
   'ip': IpWidget,
   'choice': SelectWidget,
-  'integer': NumberWidget,
+  'integer': IntegerWidget,
 }
 
 export default theme;

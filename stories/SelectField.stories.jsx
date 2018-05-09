@@ -16,6 +16,7 @@ const schema = {
       type: 'string',
       enum: ['human', 'alien'],
       title: 'Title',
+      description: 'Description',
     }
   },
   required: ['foo'],

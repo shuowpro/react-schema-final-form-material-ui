@@ -1,11 +1,23 @@
 import React from 'react';
 import { Field } from 'react-final-form';
-import TextField from 'material-ui/TextField';
+import FormControl from 'material-ui/Form/FormControl';
+import FormHelperText from 'material-ui/Form/FormHelperText';
+import Input, { InputLabel } from 'material-ui/Input';
+import withStyles from 'material-ui/styles/withStyles';
+
+const styles = theme => ({
+  root: {
+    margin: `${theme.spacing.unit}px 0`,
+  },
+});
 
 const BaseInputWidget = props => {
   const {
     fieldName,
     schema,
+    classes,
+    required,
+    type,
     ...rest
   } = props;
   return (
@@ -16,22 +28,23 @@ const BaseInputWidget = props => {
       {...rest}
     >
       {({
-        input: { name, onChange, value, ...restInput },
+        input: { name, ...restInput },
         meta: { touched, error },
-        ...others
       }) => (
-        <TextField
-          {...others}
-          name={name}
-          helperText={touched ? error : undefined}
-          error={error && touched}
-          inputProps={restInput}
-          onChange={onChange}
-          value={value}
+        <FormControl
+          className={classes.root}
+          error={!!touched && !!error}
+          required={required}
           fullWidth
-        />
+        >
+          <InputLabel htmlFor={name}>Name</InputLabel>
+          <Input id={fieldName} type={type} {...restInput} />
+          {(!!touched && !!error) && <FormHelperText>{touched ? error : undefined}</FormHelperText>}
+          {schema.description && <FormHelperText error={false}>{schema.description}</FormHelperText>}
+        </FormControl>
       )}
     </Field>
   )
 }
-export default BaseInputWidget;
+
+export default withStyles(styles)(BaseInputWidget);
