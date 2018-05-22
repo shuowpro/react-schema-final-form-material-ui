@@ -1,10 +1,10 @@
 import React from 'react';
 import { Field } from 'react-final-form';
-import FormControl from 'material-ui/Form/FormControl';
-import FormControlLabel from 'material-ui/Form/FormControlLabel';
-import FormHelperText from 'material-ui/Form/FormHelperText';
-import Switch from 'material-ui/Switch';
-import withStyles from 'material-ui/styles/withStyles';
+import FormControl from '@material-ui/core/FormControl';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Switch from '@material-ui/core/Switch';
+import withStyles from '@material-ui/core/styles/withStyles';
 
 const styles = theme => ({
   root: {

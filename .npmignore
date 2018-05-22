@@ -7,3 +7,4 @@ test
 .editorconfig
 .travis.yml
 config
+src

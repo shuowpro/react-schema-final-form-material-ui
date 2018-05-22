@@ -1,17 +1,17 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import Button from 'material-ui/Button';
-import IconButton from 'material-ui/IconButton';
-import ClearIcon from 'material-ui-icons/Clear';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import ClearIcon from '@material-ui/icons/Clear';
 import { renderField } from 'react-schema-final-form';
 import { FieldArray } from "react-final-form-arrays";
-import FormControl from 'material-ui/Form/FormControl';
-import FormHelperText from 'material-ui/Form/FormHelperText';
-import FormLabel from 'material-ui/Form/FormLabel';
-import FormGroup from 'material-ui/Form/FormGroup';
-import Paper from 'material-ui/Paper';
+import FormControl from '@material-ui/core/FormControl';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormLabel from '@material-ui/core/FormLabel';
+import FormGroup from '@material-ui/core/FormGroup';
+import Paper from '@material-ui/core/Paper';
 import _isString from 'lodash.isstring';
-import withStyles from 'material-ui/styles/withStyles';
+import withStyles from '@material-ui/core/styles/withStyles';
 
 const styles = theme => ({
   element: {

@@ -3,7 +3,7 @@ import { Form } from 'react-final-form';
 import theme from '../src';
 import SchemaForm from 'react-schema-final-form';
 import { storiesOf } from '@storybook/react';
-import Button from 'material-ui/Button';
+import Button from '@material-ui/core/Button';
 
 const onSubmit = values => {
   window.alert(JSON.stringify(values, 0, 2))

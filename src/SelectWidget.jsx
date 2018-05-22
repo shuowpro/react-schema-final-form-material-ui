@@ -1,12 +1,12 @@
 import React from 'react';
 import { Field } from 'react-final-form';
-import Input from 'material-ui/Input';
-import InputLabel from 'material-ui/Input/InputLabel';
-import FormControl from 'material-ui/Form/FormControl';
-import FormHelperText from 'material-ui/Form/FormHelperText';
-import Select from 'material-ui/Select';
-import MenuItem from 'material-ui/Menu/MenuItem';
-import withStyles from 'material-ui/styles/withStyles';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import withStyles from '@material-ui/core/styles/withStyles';
 
 const styles = theme => ({
   root: {

@@ -1,9 +1,10 @@
 import React from 'react';
 import { Field } from 'react-final-form';
-import FormControl from 'material-ui/Form/FormControl';
-import FormHelperText from 'material-ui/Form/FormHelperText';
-import Input, { InputLabel } from 'material-ui/Input';
-import withStyles from 'material-ui/styles/withStyles';
+import FormControl from '@material-ui/core/FormControl';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import withStyles from '@material-ui/core/styles/withStyles';
 
 const styles = theme => ({
   root: {
