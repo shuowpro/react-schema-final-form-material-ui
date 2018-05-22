@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Field } from 'react-final-form';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -12,14 +13,18 @@ const styles = theme => ({
   },
 });
 
-const SwitchWidget = props => {
+const SwitchWidget = (props, context) => {
   const {
     fieldName,
     schema,
     required,
     classes,
   } = props;
+  const {
+    reactFinalSchemaForm: { advanced },
+  } = context;
   return (
+    (!advanced || !schema.advanced) &&
     <Field
       name={fieldName}
       label={schema.title}
@@ -57,6 +62,10 @@ const SwitchWidget = props => {
       )}}
     </Field>
   )
+}
+
+SwitchWidget.contextTypes = {
+  reactFinalSchemaForm: PropTypes.object.isRequired,
 }
 
 export default withStyles(styles)(SwitchWidget);

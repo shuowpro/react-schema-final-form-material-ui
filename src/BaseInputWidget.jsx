@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Field } from 'react-final-form';
 import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
@@ -12,7 +13,7 @@ const styles = theme => ({
   },
 });
 
-const BaseInputWidget = props => {
+const BaseInputWidget = (props, context) => {
   const {
     fieldName,
     schema,
@@ -21,7 +22,11 @@ const BaseInputWidget = props => {
     type,
     ...rest
   } = props;
+  const {
+    reactFinalSchemaForm: { advanced },
+  } = context;
   return (
+    (!advanced || !schema.advanced) &&
     <Field
       name={fieldName}
       label={schema.title}
@@ -45,6 +50,10 @@ const BaseInputWidget = props => {
       )}
     </Field>
   )
+}
+
+BaseInputWidget.contextTypes = {
+  reactFinalSchemaForm: PropTypes.object.isRequired,
 }
 
 export default withStyles(styles)(BaseInputWidget);
