@@ -16,7 +16,11 @@ const ObjectWidget = (props, context) => {
     fieldName,
     required,
   } = props;
+  const {
+    reactFinalSchemaForm: { advanced },
+  } = context;
   return (
+    (!advanced || !schema.advanced) &&
     <Field
       name={fieldName}
     >

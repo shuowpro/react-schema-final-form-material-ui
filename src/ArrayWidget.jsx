@@ -33,8 +33,10 @@ const ArrayWidget = (props, context) => {
   } = props;
   const {
     reactFinalForm: { mutators },
+    reactFinalSchemaForm: { advanced },
   } = context;
   return (
+    (!advanced || !schema.advanced) &&
     <FieldArray
       name={fieldName}
       fieldName={fieldName}
@@ -111,6 +113,7 @@ ArrayWidget.propTypes = {
 
 ArrayWidget.contextTypes = {
   reactFinalForm: PropTypes.object.isRequired,
+  reactFinalSchemaForm: PropTypes.object.isRequired,
 }
 
 export default withStyles(styles)(ArrayWidget);

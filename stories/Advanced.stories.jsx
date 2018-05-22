@@ -44,7 +44,45 @@ const schema = {
     boolean: {
       type: 'boolean',
       title: 'boolean is not advanced',
-    }
+    },
+    objectAdv: {
+      type: 'object',
+      title: 'object is advanced',
+      properties: {
+        foo: {
+          type: 'string',
+          title: 'foo'
+        },
+      },
+      advanced: 'true',
+    },
+    object: {
+      type: 'object',
+      title: 'object is not advanced',
+      properties: {
+        foo: {
+          type: 'string',
+          title: 'foo'
+        },
+      },
+    },
+    arrayAdv: {
+      type: 'array',
+      title: 'array is advanced',
+      items: {
+        type: 'string',
+        title: 'foo'
+      },
+      advanced: 'true',
+    },
+    array: {
+      type: 'array',
+      title: 'array is not advanced',
+      items: {
+        type: 'string',
+        title: 'foo'
+      },
+    },
   },
 }
 
