@@ -80,6 +80,7 @@ const ArrayWidget = (props, context) => {
                     schema: schema.items,
                     fieldName: name,
                     theme,
+                    arrayIndex: idx,
                   })}
                 </FormGroup>
               )}
