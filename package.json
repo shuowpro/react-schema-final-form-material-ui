@@ -1,7 +1,7 @@
 {
   "name": "react-schema-final-form-material-ui",
   "main": "./lib/index.js",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "title": "react-schema-final-form-material-ui",
   "description": "The theme for react-schema-final-form based on material-ui-next.",
   "keywords": [
@@ -75,7 +75,7 @@
     "test": "echo \"Error: no test specified\" && exit 0",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -c .storybook -o .doc",
-    "prepare": "npm test"
+    "prepare": "npm run build"
   },
   "peerDependencies": {
     "@material-ui/core": "^1.0.0",
