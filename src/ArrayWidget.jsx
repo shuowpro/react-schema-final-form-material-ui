@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import ClearIcon from '@material-ui/icons/Clear';
-import { renderField } from 'react-schema-final-form';
+import { renderField, withSchema } from 'react-schema-final-form';
 import { FieldArray } from "react-final-form-arrays";
 import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
@@ -21,10 +21,11 @@ const styles = theme => ({
 
 const handleClickRemove = (remove, idx) => () => {
   remove(idx);
-}
+};
 
 const ArrayWidget = (props, context) => {
   const {
+    advanced,
     fieldName,
     schema,
     theme,
@@ -33,7 +34,6 @@ const ArrayWidget = (props, context) => {
   } = props;
   const {
     reactFinalForm: { mutators },
-    reactFinalSchemaForm: { advanced },
   } = context;
   return (
     (!advanced || !schema.advanced) &&
@@ -103,18 +103,17 @@ const ArrayWidget = (props, context) => {
       )}
     </FieldArray>
   );
-}
+};
 
 ArrayWidget.propTypes = {
   schema: PropTypes.object.isRequired,
   fieldName: PropTypes.string,
   label: PropTypes.string,
   theme: PropTypes.object,
-}
+};
 
 ArrayWidget.contextTypes = {
   reactFinalForm: PropTypes.object.isRequired,
-  reactFinalSchemaForm: PropTypes.object.isRequired,
-}
+};
 
-export default withStyles(styles)(ArrayWidget);
+export default withStyles(styles)(withSchema(ArrayWidget));

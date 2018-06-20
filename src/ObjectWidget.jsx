@@ -5,20 +5,19 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
-import { renderObjectProperties } from 'react-schema-final-form';
+import { renderObjectProperties, withSchema } from 'react-schema-final-form';
 import _isString from 'lodash.isstring';
 import withPaperContainer from './hoc/withPaperContainer.jsx';
 
-const ObjectWidget = (props, context) => {
+const ObjectWidget = props => {
   const {
+    rootSchema,
     schema,
     theme,
     fieldName,
     required,
+    advanced,
   } = props;
-  const {
-    reactFinalSchemaForm: { advanced },
-  } = context;
   return (
     (!advanced || !schema.advanced) &&
     <Field
@@ -35,7 +34,7 @@ const ObjectWidget = (props, context) => {
           <FormGroup>
             {renderObjectProperties({
               schema,
-              rootSchema: context.reactFinalSchemaForm.schema,
+              rootSchema,
               theme,
               fieldName,
             })}
@@ -55,8 +54,4 @@ ObjectWidget.propTypes = {
   theme: PropTypes.object,
 };
 
-ObjectWidget.contextTypes = {
-  reactFinalSchemaForm: PropTypes.object,
-};
-
-export default withPaperContainer(ObjectWidget);
+export default withPaperContainer(withSchema(ObjectWidget));

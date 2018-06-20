@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'react-final-form';
+import { withSchema } from 'react-schema-final-form';
 import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Input from '@material-ui/core/Input';
@@ -13,8 +14,9 @@ const styles = theme => ({
   },
 });
 
-const BaseInputWidget = (props, context) => {
+const BaseInputWidget = props => {
   const {
+    advanced,
     fieldName,
     schema,
     classes,
@@ -22,9 +24,6 @@ const BaseInputWidget = (props, context) => {
     type,
     ...rest
   } = props;
-  const {
-    reactFinalSchemaForm: { advanced },
-  } = context;
   return (
     (!advanced || !schema.advanced) &&
     <Field
@@ -50,10 +49,6 @@ const BaseInputWidget = (props, context) => {
       )}
     </Field>
   )
-}
+};
 
-BaseInputWidget.contextTypes = {
-  reactFinalSchemaForm: PropTypes.object.isRequired,
-}
-
-export default withStyles(styles)(BaseInputWidget);
+export default withStyles(styles)(withSchema(BaseInputWidget));

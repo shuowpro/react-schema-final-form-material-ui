@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'react-final-form';
+import { withSchema } from 'react-schema-final-form';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
@@ -13,16 +14,14 @@ const styles = theme => ({
   },
 });
 
-const SwitchWidget = (props, context) => {
+const SwitchWidget = props => {
   const {
+    advanced,
     fieldName,
     schema,
     required,
     classes,
   } = props;
-  const {
-    reactFinalSchemaForm: { advanced },
-  } = context;
   return (
     (!advanced || !schema.advanced) &&
     <Field
@@ -62,10 +61,6 @@ const SwitchWidget = (props, context) => {
       )}}
     </Field>
   )
-}
+};
 
-SwitchWidget.contextTypes = {
-  reactFinalSchemaForm: PropTypes.object.isRequired,
-}
-
-export default withStyles(styles)(SwitchWidget);
+export default withStyles(styles)(withSchema(SwitchWidget));
