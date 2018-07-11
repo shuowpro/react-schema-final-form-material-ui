@@ -20,30 +20,22 @@ const ObjectWidget = props => {
   } = props;
   return (
     (!advanced || !schema.advanced) &&
-    <Field
-      name={fieldName}
+    <FormControl
+      component="fieldset"
+      required={required}
+      fullWidth
     >
-      {({ meta: { error }}) => (
-        <FormControl
-          component="fieldset"
-          error={_isString(error)}
-          required={required}
-          fullWidth
-        >
-          {schema.title && <FormLabel component="legend">{schema.title}</FormLabel>}
-          <FormGroup>
-            {renderObjectProperties({
-              schema,
-              rootSchema,
-              theme,
-              fieldName,
-            })}
-          </FormGroup>
-          {_isString(error) && <FormHelperText>{(_isString(error) ? error : undefined) || schema.description}</FormHelperText>}
-          {schema.description && <FormHelperText error={false}>{schema.description}</FormHelperText>}
-        </FormControl>
-      )}
-    </Field>
+      {schema.title && <FormLabel component="legend">{schema.title}</FormLabel>}
+      <FormGroup>
+        {renderObjectProperties({
+          schema,
+          rootSchema,
+          theme,
+          fieldName,
+        })}
+      </FormGroup>
+      {schema.description && <FormHelperText error={false}>{schema.description}</FormHelperText>}
+    </FormControl>
   );
 };
 
