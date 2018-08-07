@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Field } from 'react-final-form';
+import { Form } from 'react-final-form';
 import theme from '../src';
 import SchemaForm from 'react-schema-final-form';
 import { storiesOf } from '@storybook/react';

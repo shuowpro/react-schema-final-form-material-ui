@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field } from 'react-final-form';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import { renderObjectProperties, withSchema } from 'react-schema-final-form';
-import _isString from 'lodash.isstring';
 import withPaperContainer from './hoc/withPaperContainer.jsx';
 
 const ObjectWidget = props => {
